@@ -11,6 +11,7 @@ class SurveyController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('permission:questionnaire_survey',['except' => 'questresult']);
     }
     //问卷管理
     public function questmanage()

@@ -11,6 +11,7 @@ class WarningsController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('permission:crisis_warning',['only' => 'warnsetting']);
     }
     //查看预警
     public function warnsee()

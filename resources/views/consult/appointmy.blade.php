@@ -37,12 +37,12 @@
                             <div class="row">
                                 <!--正文-->
                                 <div class="col-md-12">
-                                    <form action="test.php" id="date" method="post" class="form-horizontal">
+                                    {!! Form::open(['route'=>['permissions.create'],'class'=>'form-horizontal','method'=>'get']) !!}
                                         <div class="form-group">
-                                            <label class="col-md-3 control-label">预约日期</label>
+                                            {!! Form::label('date','预约日期',['class'=>'col-md-3 control-label'] )!!}
                                             <div class="col-md-2">
                                                 <div class="input-group date" id="dateSelect">
-                                                    <input type="text" class="form-control" name="dateSelect">
+                                                    {!! Form::text('dateSelect',null,['class'=>'form-control']) !!}
                                                     <span class="input-group-addon">
                                                             <span class="glyphicon glyphicon-calendar"></span>
                                                     </span>
@@ -50,20 +50,112 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-3 control-label">咨询师</label>
+                                            {!! Form::label('namelist','咨询师',['class'=>'col-md-3 control-label'] )!!}
                                             <div class="col-md-2">
-                                                <select name="counselor" style="width:100%">
-                                                    <option value="0">--请选择--</option>
-                                                </select>
+                                                {!! Form::select('namelist',$role_manage) !!}
                                             </div>
+
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-8 text-center">
-                                                <input type="submit" value="查询" class="btn btn-info">
+                                                <input type="submit" value="预约" class="btn btn-info">
                                             </div>
                                         </div>
-                                    </form>
+                                    {!! Form::close() !!}
+
                                 </div>
+                                <div class="col-xs-12 col-sm-6 widget-container-col ui-sortable">
+                                    <div class="widget-box ui-sortable-handle" style="min-height:250px">
+                                        <!-- #section:custom/widget-box.options -->
+                                        <div class="widget-header">
+                                            <h5 class="widget-title bigger lighter">
+                                                未通过审核的预约
+                                            </h5>
+                                        </div>
+
+                                        <!-- /section:custom/widget-box.options -->
+                                        <div class="widget-body">
+                                            <div class="widget-main no-padding">
+                                                <table id="warning" class="table table-striped table-bordered table-hover">
+                                                    <thead class="thin-border-bottom">
+                                                    <tr>
+                                                        <th>
+                                                            序号
+                                                        </th>
+                                                        <th>
+                                                            登录名
+                                                        </th>
+                                                        <th>
+                                                           咨询师名
+                                                        </th>
+                                                        <th>预约日期</th>
+                                                        <th class="hidden-480">状态</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <?php $i=1; ?>
+                                                    @foreach($noorder as $value)
+                                                    <tr>
+                                                        <td>{{ $i++ }}</td>
+                                                        <td>{{ $value->user_name }}</td>
+                                                        <td>{{ $value->order_name }}</td>
+                                                        <td>{{ $value->date }}</td>
+                                                        <td>未审核</td>
+                                                    </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6 widget-container-col ui-sortable">
+                                    <div class="widget-box ui-sortable-handle" style="min-height:250px">
+                                        <!-- #section:custom/widget-box.options -->
+                                        <div class="widget-header">
+                                            <h5 class="widget-title bigger lighter">
+                                               通过审核的预约
+                                            </h5>
+                                        </div>
+
+                                        <!-- /section:custom/widget-box.options -->
+                                        <div class="widget-body">
+                                            <div class="widget-main no-padding">
+                                                <table id="warning" class="table table-striped table-bordered table-hover">
+                                                    <thead class="thin-border-bottom">
+                                                    <tr>
+                                                        <th>
+                                                            序号
+                                                        </th>
+                                                        <th>
+                                                            登录名
+                                                        </th>
+                                                        <th>
+                                                            咨询师名
+                                                        </th>
+                                                        <th>预约日期</th>
+                                                        <th class="hidden-480">状态</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <?php $i=1; ?>
+                                                    @foreach($yesorder as $value)
+                                                        <tr>
+                                                            <td>{{ $i++ }}</td>
+                                                            <td>{{ $value->user_name }}</td>
+                                                            <td>{{ $value->order_name }}</td>
+                                                            <td>{{ $value->date }}</td>
+                                                            <td>已审核</td>
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                             <!--/.row-->
 

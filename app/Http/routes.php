@@ -18,7 +18,7 @@
 Route::auth();
 
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@welcome');
 Route::get('/', 'HomeController@welcome');
 
 //基础设置
@@ -27,7 +27,8 @@ Route::get('/data', 'SettingsController@data');
 Route::get('/rolemanage', 'SettingsController@rolemanage');
 Route::get('/membermanage', 'SettingsController@membermanage');
 Route::get('/power','SettingsController@power');
-
+Route::resource('roles','RolesController');
+Route::resource('permissions','PermissionsController');
 
 //心理测验
 Route::get('/gaugemanage', 'TestsController@gaugemanage');
@@ -52,6 +53,7 @@ Route::get('/appointsetting', 'ConsultController@appointsetting');
 Route::get('/appointmanage', 'ConsultController@appointmanage');
 Route::get('/appointcoach', 'ConsultController@appointcoach');
 Route::get('/appointmy', 'ConsultController@appointmy');
+Route::get('/order','ConsultController@order');
 
 //档案管理
 Route::get('/archivestest', 'ManagementController@archivestest');
@@ -61,7 +63,10 @@ Route::get('/archivesall', 'ManagementController@archivesall');
 
 //回收站
 Route::get('/recycle','RecycleController@recycle');
-
+Route::get('/delete','RecycleController@delete');
+Route::get('/restore','RecycleController@restore');
+Route::get('/cancel','RecycleController@cancel');
+//Route::post('/delete/{id}/check',['as'=>'/delete','uses'=>'RecycleController@delete']);
 
 
 

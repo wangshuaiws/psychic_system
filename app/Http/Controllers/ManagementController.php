@@ -10,7 +10,7 @@ class ManagementController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth','role:admin']);
     }
 
     //测评档案

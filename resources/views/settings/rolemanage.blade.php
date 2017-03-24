@@ -75,6 +75,7 @@
 
                         </div>
                         <!-- /.page-content-area -->
+                        <div class="fa fa-btn fa-user" style="position: relative; top: 10px;left: 980px"><a href="{{ url('/add') }}"> 增加角色 </a></div>
                     </div>
                     <!-- /.page-content -->
                 </div>

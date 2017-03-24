@@ -35,9 +35,13 @@
                         <div class="col-xs-12">
                             <div class="row">
                                 <!--正文-->
+
                                 <div class="col-sm-12">
                                     <div class="container-fluid">
                                         <div class="row">
+                                            @foreach($roles as $role)
+                                            {!! Form::open(['method' => 'get','route' => ['permissions.edit',$role->name]]) !!}
+                                            @endforeach
                                             <div class="col-md-7 scroll widget-box ui-sortable-handle" style="min-height:250px">
                                                 <div class="widget-header">
                                                     <h5 class="widget-title bigger lighter">
@@ -49,11 +53,22 @@
                                                         <tr>
                                                             <th>序号</th>
                                                             <th>登录名</th>
-                                                            <th>姓名</th>
+                                                            <th>email</th>
                                                             <th>角色名称</th>
-                                                            <th>所属部门</th>
+                                                            <th>选择</th>
                                                         </tr>
-                                                        <tbody></tbody>
+                                                    <tbody>
+                                                    <?php $i = 1; ?>
+                                                    @foreach($users as $user)
+                                                        <tr>
+                                                            <td>{{ $i++ }}</td>
+                                                            <td>{{ $user->name }}</td>
+                                                            <td>{{ $user->email }}</td>
+                                                            <td>用户</td>
+                                                            <td>{!! Form::checkbox($user->id, $user->email) !!}<br></td>
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody>
                                                     </thead>
                                                 </table>
                                             </div>
@@ -63,15 +78,19 @@
 													量表选择
 												</h5>
                                                 </div>
-                                                <input type="checkbox" name="depressed">汉密尔顿抑郁量表
+                                                {!! Form::checkbox('depressed', '汉密尔顿抑郁量表') !!}汉密尔顿抑郁量表
                                                 <br>
-                                                <input type="checkbox" name="anxious">汉密尔顿焦虑量表
+                                                {!! Form::checkbox('anxious', '汉密尔顿焦虑量表') !!}汉密尔顿焦虑量表
                                                 <br>
-                                                <input type="checkbox" name="symptom">症状自评量表(SCL-90)
+                                                {!! Form::checkbox('symptom', '症状自评量表(SCL-90)') !!}症状自评量表(SCL-90)
                                                 <br>
                                             </div>
+                                            <div class="col-md-12 foot text-center">
+                                                {!! Form::submit('分配',['class'=>"btn btn-sm btn-info"]) !!}
+                                            </div>
+                                            {!! Form::close() !!}
                                         </div>
-                                        <div class="row">
+                                        <!--<div class="row">
                                             <div class="col-md-12 widget-box ui-sortable-handle" style="min-height:250px">
                                                 <div class="widget-header">
                                                     <h5 class="widget-title bigger lighter">
@@ -131,7 +150,7 @@
                                                 </div>
                                                 </form>
                                             </div>
-                                        </div>
+                                        </div>-->
                                         <div class="row">
                                             <div class="col-md-12 widget-box ui-sortable-handle" style="min-height:250px">
                                                 <div class="widget-header">
@@ -151,12 +170,25 @@
                                                             <th>操作</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody></tbody>
+                                                    <tbody>
+                                                    @foreach($scales as $scale)
+                                                    <tr>
+                                                            <td>{{ $scale->id }}</td>
+                                                            <td>{{ $scale->title }}</td>
+                                                            <td>{{ $scale->name }}</td>
+                                                            <td>{{ $scale->name }}</td>
+                                                            <td>{{ $scale->updated_at }}</td>
+                                                            <td>{{ $scale->completed == 1? '已完成':'未完成' }}</td>
+                                                            <td><a href="">查看</a></td>
+                                                    </tr>
+                                                    @endforeach
+                                                    </tbody>
                                                 </table>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                             <!--/.row-->
 

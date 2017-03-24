@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use Illuminate\Http\Request;
-
+use Auth;
+use App\User;
+use App\Scale;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Redirect;
 
 class TestsController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('permission:psychological_test',['except' => 'gaugecheck']);
     }
     //量表管理
     public function gaugemanage()
@@ -20,7 +25,14 @@ class TestsController extends Controller
     //量表分配
     public function gaugeallot()
     {
-        return view('tests/gaugeallot');
+       // $scales = Auth::user()->scale()->get(['name','user_id']);
+        //$roles = Auth::user()->role()->get();
+        //$users = Auth::user()->where('permission',0)->get();
+        //dd($users);
+        $roles = Role::get();
+        $scales = Scale::get();
+        $users = Auth::user()->where('permission',0)->get();
+        return view('tests/gaugeallot',compact('roles','users','scales'));
     }
     //测试结果录入
     public function gaugeinput()
@@ -30,6 +42,18 @@ class TestsController extends Controller
     //查看测试结果
     public function gaugecheck()
     {
-        return view('tests/gaugecheck');
+        $scales = Auth::user()->scale()->where('id',$_GET['id'])->get();
+        foreach($scales as $scale)
+        {
+            $ab = json_decode($scale->number,true);
+        }
+        $a = $ab['0']; $b = $ab['1'];
+        $c = $ab['2']; $d = $ab['3'];
+        $e = $ab['4']; $f = $ab['5'];
+        $g = $ab['6'];
+        //$scales = Scale::findOrFail($_GET['id'])->get();
+        return view('tests/gaugecheck',compact('scales','a','b','c','d','e','f','g'));
     }
+
+
 }

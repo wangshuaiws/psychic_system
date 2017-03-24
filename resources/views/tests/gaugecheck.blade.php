@@ -37,16 +37,7 @@
                                 <!--正文-->
                                 <div class="col-sm-12">
                                     <div class="tabbable">
-
-                                        <ul id="myTab" class="nav nav-tabs tab-color-blue background-blue">
-                                            <li class="active">
-                                                <a href="#answered" data-toggle="tab">已作答记录</a>
-                                            </li>
-                                            <li>
-                                                <a href="#noAnswer" data-toggle="tab">未作答记录</a>
-                                            </li>
-                                        </ul>
-
+                                        <h5>已作答记录</h5>
                                         <div class="tab-content">
                                             <div class="tab-pane in active" id="answered">
                                                 <table class="table table-striped table-bordered table-hover" id="answered">
@@ -54,28 +45,27 @@
                                                         <tr>
                                                             <th>序号</th>
                                                             <th>登录名</th>
-                                                            <th>姓名</th>
+                                                            <th>量表名</th>
                                                             <th>完成时间</th>
-                                                            <th>操作</th>
+                                                            <th>结果</th>
                                                         </tr>
-                                                        <tbody>
-                                                        </tbody>
                                                     </thead>
-                                                </table>
-                                            </div>
-                                            <div class="tab-pane" id="noAnswer">
-                                                <table class="table table-striped table-bordered table-hover" id="noAnswer">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>序号</th>
-                                                            <th>登录名</th>
-                                                            <th>姓名</th>
-                                                            <th>完成时间</th>
-                                                            <th>操作</th>
-                                                        </tr>
                                                         <tbody>
+                                                        <?php $i = 1; ?>
+                                                        @foreach($scales as $scale)
+                                                            @if($scale->completed == 1)
+                                                            @if($scale->is_remove == 0)
+                                                                <tr>
+                                                                    <td>{{ $i++ }}</td>
+                                                                    <td>{{ $scale->name }}</td>
+                                                                    <td>{{  $scale->title  }}</td>
+                                                                    <td>{{ $scale->updated_at }}</td>
+                                                                    <td>{{ $scale->total }}</td>
+                                                                </tr>
+                                                            @endif
+                                                            @endif
+                                                        @endforeach
                                                         </tbody>
-                                                    </thead>
                                                 </table>
                                             </div>
                                         </div>
@@ -90,6 +80,9 @@
                     </div>
                     <!-- /.page-content -->
                 </div>
+                <div style="width: 30%">
+                <canvas id="lineChart" width="500" height="300"></canvas>
+                    </div>
                 <!-- /.main-content -->
                 @include('common/_footer')
 
@@ -119,6 +112,69 @@
             </script>
             <script src="../assets/js2/bootstrap.min.js"></script>
 
+            <script src="{{ asset('Chart.min.js') }}"></script>
+            <script>
+                $(document).ready(function () {
+                    var ctxline = $('#lineChart');
+                    var data = {
+                        labels: ["焦虑化", "体重", "认知障碍", "日夜变化", "迟缓", "睡眠障碍", "绝望感"],
+                        datasets: [
+                            {
+                                label: "测试结果",
+                                fill: false,
+                                lineTension: 0.1,
+                                backgroundColor: "rgba(75,192,192,0.2)",
+                                borderColor: "rgba(75,192,192,1)",
+                                borderCapStyle: 'butt',
+                                borderDash: [],
+                                borderDashOffset: 0.0,
+                                borderJoinStyle: 'miter',
+                                pointBorderColor: "rgba(75,192,192,1)",
+                                pointBackgroundColor: "#fff",
+                                pointBorderWidth: 1,
+                                pointHoverRadius: 5,
+                                pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                                pointHoverBorderColor: "rgba(220,220,220,1)",
+                                pointHoverBorderWidth: 2,
+                                pointRadius: 1,
+                                pointHitRadius: 10,
+                                data: [{{ $a }},{{ $b }},{{ $c }},{{ $d }},{{ $e }},{{ $f }},{{ $g }}],
+                                spanGaps: false,
+                            },
+                            {
+                                label: "标准线",
+                                fill: false,
+                                lineTension: 0.1,
+                                backgroundColor: "rgba(112,128,144,0.2)",
+                                borderColor: "rgba(112,128,144,1)",
+                                borderCapStyle: 'butt',
+                                borderDash: [],
+                                borderDashOffset: 0.0,
+                                borderJoinStyle: 'miter',
+                                pointBorderColor: "rgba(112,128,144,1)",
+                                pointBackgroundColor: "#fff",
+                                pointBorderWidth: 1,
+                                pointHoverRadius: 5,
+                                pointHoverBackgroundColor: "rgba(112,128,144,1)",
+                                pointHoverBorderColor: "rgba(112,128,144,1)",
+                                pointHoverBorderWidth: 2,
+                                pointRadius: 1,
+                                pointHitRadius: 10,
+                                data: [5,0,6,0,2,1,2],
+                                spanGaps: false,
+                            },
+                        ]
+
+                    };
+
+                    var lineChart = new Chart(ctxline, {
+                        type: 'line',
+                        data: data
+                    });
+                })
+            </script>
+
+
             <!-- page specific plugin scripts -->
 
             <!--[if lte IE 8]>
@@ -135,12 +191,12 @@
             <!-- ace scripts -->
             <script src="../assets/js2/ace-elements.min.js"></script>
             <script src="../assets/js2/ace.min.js"></script>
-            <script>
+            <!--<script>
                 $(function(){
                     $($(".light-blue")[1]).on("click",function(){
                         window.location="index.html";
                     }); 
                 });
-            </script>
+            </script>-->
 
 </html>

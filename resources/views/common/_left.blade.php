@@ -1,5 +1,6 @@
 <!-- 侧边栏 -->
 <ul class="nav nav-list">
+    @role('admin')
     <li class="">
         <a href="#" class="dropdown-toggle">
             <i class="menu-icon fa fa-cogs"></i>
@@ -24,7 +25,7 @@
                 <b class="arrow"></b>
             </li>
             <li class="">
-                <a href="{{ url('/rolemanage') }}">
+                <a href="{{ url('/roles') }}">
                     <i class="menu-icon fa fa-caret-right"></i> 角色管理
                 </a>
 
@@ -39,7 +40,7 @@
             </li>
         </ul>
     </li>
-
+    @endrole
     <li class="">
         <a href="#" class="dropdown-toggle">
             <i class="menu-icon fa fa-pencil-square-o"></i>
@@ -51,6 +52,7 @@
         <b class="arrow"></b>
 
         <ul class="submenu">
+            @permission('psychological_test')
             <li class="">
                 <a href="{{ url('/gaugemanage') }}">
                     <i class="menu-icon fa fa-caret-right"></i> 量表管理
@@ -74,9 +76,10 @@
 
                 <b class="arrow"></b>
             </li>
-
+            @endpermission
             <li class="">
-                <a href="{{ url('/gaugecheck') }}">
+                <a href="{{ url('/home') }}">
+
                     <i class="menu-icon fa fa-caret-right"></i> 查看测试结果
                 </a>
 
@@ -103,7 +106,7 @@
 
                 <b class="arrow"></b>
             </li>
-
+            @permission('crisis_warning')
             <li class="">
                 <a href="{{ url('/warnsetting') }}">
                     <i class="menu-icon fa fa-caret-right"></i> 预警设置
@@ -111,6 +114,7 @@
 
                 <b class="arrow"></b>
             </li>
+            @endpermission
         </ul>
     </li>
 
@@ -125,6 +129,7 @@
         <b class="arrow"></b>
 
         <ul class="submenu">
+            @permission('questionnaire_survey')
             <li class="">
                 <a href="{{ url('/questmanage') }}">
                     <i class="menu-icon fa fa-caret-right"></i> 问卷管理
@@ -140,7 +145,7 @@
 
                 <b class="arrow"></b>
             </li>
-
+            @endpermission
             <li class="">
                 <a href="{{ url('/questresult') }}">
                     <i class="menu-icon fa fa-caret-right"></i> 调查结果
@@ -161,6 +166,7 @@
         <b class="arrow"></b>
 
         <ul class="submenu">
+            @permission('Reservation_consultation')
             <li class="">
                 <a href="{{ url('/appointsetting') }}">
                     <i class="menu-icon fa fa-caret-right"></i> 参数设置
@@ -184,6 +190,7 @@
 
                 <b class="arrow"></b>
             </li>
+            @endpermission
 
             <li class="">
                 <a href="{{ url('/appointmy') }}">
@@ -194,7 +201,7 @@
             </li>
         </ul>
     </li>
-
+    @role('admin')
     <li class="">
         <a href="#" class="dropdown-toggle">
             <i class="menu-icon fa fa-book"></i>
@@ -239,6 +246,7 @@
             </li>
         </ul>
     </li>
+    @endrole
 
     <li class="">
         <a href="{{ url('/recycle') }}">

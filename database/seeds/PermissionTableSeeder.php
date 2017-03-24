@@ -61,8 +61,8 @@ class PermissionTableSeeder extends Seeder
                 'display_name' => '删除用户',
             ],
             [
-                'name' => 'delete_permission',
-                'display_name' => '删除权限',
+                'name' => 'delete_role',
+                'display_name' => '删除角色',
             ],
         ];
         foreach($permissions as $permission)

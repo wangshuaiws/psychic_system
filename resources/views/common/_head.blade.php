@@ -5,7 +5,6 @@
 
     <meta name="description" content="overview &amp; stats" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
     <!-- bootstrap & fontawesome -->
     <link rel="stylesheet" href="../assets/css2/bootstrap.min.css" />
     <link rel="stylesheet" href="../assets/css2/font-awesome.min.css" />
@@ -26,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="../assets/css2/home.css" />
     <!--[if lte IE 9]>
     <link rel="stylesheet" href="../assets/css2/ace-ie.min.css" />
+
     <![endif]-->
 
     <!-- inline styles related to this page -->
@@ -39,6 +39,7 @@
     <script src="../assets/js2/html5shiv.min.js"></script>
     <script src="../assets/js2/respond.min.js"></script>
     <![endif]-->
+
 </head>
 
 <body class="no-skin">
@@ -194,7 +195,7 @@
                         <img class="nav-user-photo" src="../assets/avatars/user.jpg" alt="Jason's Photo" />
                             <span class="user-info">
 									<small>欢迎登录,</small>
-									Jason
+									{{ $name }}
 								</span>
 
                         <i class="ace-icon fa fa-caret-down"></i>

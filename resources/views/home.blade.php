@@ -35,12 +35,13 @@
                 <div class="col-xs-12">
                     <div class="row">
                         <!--正文-->
+                        @role('user')
                         <div class="col-xs-12 col-sm-6 widget-container-col ui-sortable">
                             <div class="widget-box ui-sortable-handle" style="min-height:250px">
                                 <!-- #section:custom/widget-box.options -->
                                 <div class="widget-header">
                                     <h5 class="widget-title bigger lighter">
-                                        预警报告
+                                        未完成量表
                                     </h5>
                                 </div>
 
@@ -53,7 +54,6 @@
                                                 <th>
                                                     序号
                                                 </th>
-
                                                 <th>
                                                     登录名
                                                 </th>
@@ -61,15 +61,87 @@
                                                     量表名称
                                                 </th>
                                                 <th class="hidden-480">操作</th>
+                                                <th>状态</th>
                                             </tr>
                                             </thead>
+                                            <tbody>
+                                            <?php $i = 1; ?>
+                                            @foreach($scales as $scale)
+                                                @if($scale->is_remove ==0)
+                                                    @if($scale->completed ==0)
+                                            <tr>
+                                                <td>{{ $i++ }}</td>
+                                                <td>{{ $scale->name }}</td>
+                                                <td>{{  $scale->title  }}</td>
+                                                <td><a href="{{ route('permissions.show',['id' => $scale->id])}}">测试</a>
+                                                    <a href="{{ url('/delmete').'?'.'id'.'='.$scale->id }}">删除</a>
+                                                </td>
+                                                <td>未完成</td>
+                                            </tr>
+                                                        @endif
+                                            @endif
+                                                @endforeach
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- /.span -->
 
+                        <div class="col-xs-12 col-sm-6 widget-container-col ui-sortable">
+                            <div class="widget-box ui-sortable-handle" style="min-height:250px">
+                                <!-- #section:custom/widget-box.options -->
+                                <div class="widget-header">
+                                    <h5 class="widget-title bigger lighter">
+                                        已完成量表
+                                    </h5>
+                                </div>
+
+                                <!-- /section:custom/widget-box.options -->
+                                <div class="widget-body">
+                                    <div class="widget-main no-padding">
+                                        <table id="warning" class="table table-striped table-bordered table-hover">
+                                            <thead class="thin-border-bottom">
+                                            <tr>
+                                                <th>
+                                                    序号
+                                                </th>
+                                                <th>
+                                                    登录名
+                                                </th>
+                                                <th>
+                                                    量表名称
+                                                </th>
+                                                <th class="hidden-480">操作</th>
+                                                <th>状态</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php $i = 1; ?>
+                                            @foreach($scales as $scale)
+                                                @if($scale->is_remove ==0)
+                                                    @if($scale->completed ==1)
+                                                    <tr>
+                                                        <td>{{ $i++ }}</td>
+                                                        <td>{{ $scale->name }}</td>
+                                                        <td>{{  $scale->title  }}</td>
+                                                        <td><a href="{{ url('/gaugecheck').'?'.'id'.'='.$scale->id}}">查看结果</a>
+                                                            <a href="{{ url('/delmete').'?'.'id'.'='.$scale->id }}">删除</a>
+                                                        </td>
+                                                        <td>已完成</td>
+                                                    </tr>
+                                                        @endif
+                                                @endif
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endrole
+                        <!-- /.span -->
+                        @role('role_manage')
                         <div class="col-xs-12 col-sm-6 widget-container-col ui-sortable">
                             <div class="widget-box ui-sortable-handle" style="min-height:250px">
                                 <!-- #section:custom/widget-box.options -->
@@ -88,7 +160,51 @@
                                                 <th>
                                                     序号
                                                 </th>
+                                                <th>
+                                                    预约人
+                                                </th>
+                                                <th>
+                                                    预约时间
+                                                </th>
+                                                <th class="hidden-480">预约状态</th>
+                                                <th>操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php $i=1; ?>
+                                            @foreach($orders as $order)
+                                                <tr>
+                                                    <td>{{ $i++ }}</td>
+                                                    <td>{{ $order->user_name }}</td>
+                                                    <td>{{ $order->date }}</td>
+                                                    <td>未审核</td>
+                                                    <td><a href="{{ url('/order').'?'.'id'.'='.$order->id }}">审核</a></td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 widget-container-col ui-sortable">
+                            <div class="widget-box ui-sortable-handle" style="min-height:250px">
+                                <!-- #section:custom/widget-box.options -->
+                                <div class="widget-header">
+                                    <h5 class="widget-title bigger lighter">
+                                        已处理预约
+                                    </h5>
 
+                                </div>
+                                <!-- /section:custom/widget-box.options -->
+                                <div class="widget-body">
+                                    <div class="widget-main no-padding">
+                                        <table id="appointment" class="table table-striped table-bordered table-hover">
+                                            <thead class="thin-border-bottom">
+                                            <tr>
+                                                <th>
+                                                    序号
+                                                </th>
                                                 <th>
                                                     预约人
                                                 </th>
@@ -98,19 +214,28 @@
                                                 <th class="hidden-480">预约状态</th>
                                             </tr>
                                             </thead>
-
                                             <tbody>
-
+                                            <?php $i=1; ?>
+                                            @foreach($Doneorder as $order)
+                                                <tr>
+                                                    <td>{{ $i++ }}</td>
+                                                    <td>{{ $order->user_name }}</td>
+                                                    <td>{{ $order->date }}</td>
+                                                    <td>已审核</td>
+                                                </tr>
+                                            @endforeach
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @endrole
                         <!-- /.span -->
                     </div>
                     <!-- /.row -->
                     <div class="row">
+                        @role('admin')
                         <div class="col-xs-12 col-sm-6 widget-container-col ui-sortable">
                             <div class="widget-box ui-sortable-handle" style="min-height:250px">
                                 <!-- #section:custom/widget-box.options -->
@@ -149,8 +274,9 @@
                                 </div>
                             </div>
                         </div>
+                        @endrole
                         <!-- /.span -->
-
+                        @role('user')
                         <div class="col-xs-12 col-sm-6 widget-container-col ui-sortable">
                             <div class="widget-box ui-sortable-handle" style="min-height:250px">
                                 <!-- #section:custom/widget-box.options -->
@@ -188,6 +314,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endrole
                         <!-- /.span -->
                     </div>
                     <!-- /.row -->
@@ -243,7 +370,7 @@
 <script src="../assets/js2/flot/jquery.flot.resize.min.js"></script>
 <script src="../assets/js2/jquery.dataTables.min.js"></script>
 <script src="../assets/js2/jquery.dataTables.bootstrap.js"></script>
-<script>
+<!--<script>
     $(document).ready(function () {
         $('#warning,#appointment,#examine,#questionnaire').dataTable({
             "bSort": false,
@@ -267,7 +394,7 @@
         });
     });
 </script>
-
+-->
 <!-- ace scripts -->
 <script src="../assets/js2/ace-elements.min.js"></script>
 <script src="../assets/js2/ace.min.js"></script>

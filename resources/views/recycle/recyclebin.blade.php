@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+<style>
 
+</style>
 @include('common/_head')
         <!--侧边栏-->
 @include('common/_left')
@@ -23,7 +25,9 @@
                     </li>
                     <li class="active">回收站</li>
                     <!--	<li class="active">Dashboard</li>-->
+                    <a href="{{ url('/cancel') }}" class="fa fa-bth btn-sm">清空回收站</a>
                 </ul>
+
                 <!-- /.breadcrumb -->
             </div>
 
@@ -41,11 +45,22 @@
                                             <tr>
                                                 <th>序号</th>
                                                 <th>标题</th>
-                                                <th>创建用户</th>
+                                                <th>用户</th>
                                                 <th>删除时间</th>
                                                 <th>操作</th>
                                             </tr>
                                             <tbody>
+                                        <?php $i=1 ?>
+                                            @foreach($scales as $scale)
+                                                <tr>
+                                                    <td>{{ $i++ }}</td>
+                                                    <td>{{ $scale->title }}</td>
+                                                    <td>{{ $scale->name }}</td>
+                                                    <td>{{ $scale->updated_at }}</td>
+                                                    <td><a href="{{ url('/restore').'?'.'id'.'='.$scale->id }}">还原</a>
+                                                     <a href="{{ url('/cancel').'?'.'id'.'='.$scale->id }}">彻底删除</a></td>
+                                                </tr>
+                                                @endforeach
                                             </tbody>
                                         </thead>
                                     </table>

@@ -25,4 +25,37 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    protected $admin = '1473949341@qq.com';
+
+    public function is_admin()
+    {
+        return $this->email == $this->admin?true:false;
+    }
+
+    public function scale()
+    {
+        return $this->hasMany('App\Scale');
+    }
+
+    public function role()
+    {
+        return $this->belongsToMany('App\Role');
+    }
+
+    public function user()
+    {
+        return $this->belongsToMany('App\User');
+    }
+
+    public function permission()
+    {
+        return $this->hasMany('App\Permission');
+    }
+
+    public function order()
+    {
+        return $this->belongsToMany('App\order');
+    }
+
 }
