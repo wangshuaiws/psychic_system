@@ -1,27 +1,30 @@
-# Laravel PHP Framework
+### 使用laravel框架开发的心理系统
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+#### 心理系统简介及功能
+* 本系统分为三个角色,分别是管理员,咨询师以及用户;
+* 管理员可以增加以及删除角色,可以增加新的权限;
+* 管理员可以编辑已有的角色的权限;
+* 管理员可以管理所有的用户以及咨询师;
+* 咨询师可以审核用户申请成为咨询师;
+* 咨询师管理并分配给用户量表以及问卷;
+* 咨询师在主页可以审核用户的预约申请;
+* 用户可以在主页查看并测试咨询师分配的量表;
+* 用户测试完量表可在主页查看测试结果;
+* 用户可以删除咨询师分配的量表到回收站;
+* 用户在回收站可以选择还原删除内容以及清空回收站;
+* 用户可以在我的预约中选择日期以及咨询师进行预约;
+* 用户可以在右上角的个人信息中查看个人信息以及申请成为咨询师;
+* 回收站功能适用于全部角色;
+* 个人信息的查看都是在右上角;
+* 量表测试结果以折线图的形式展示;
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+#### 心理系统插件
+* 实现角色管理以及权限管理使用插件 zizaco/entrust
+* 实现表单的提交以及数据传入使用插件 laravelcollective/html
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
-
-## Official Documentation
-
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+#### 心理系统测试账号
+* 咨询师账号 bbb
+* 咨询师密码 123456
+* 用户账号 ccc
+* 用户密码 123456
+* 可以自行注册,注册之后自动调整首页,角色为用户;
