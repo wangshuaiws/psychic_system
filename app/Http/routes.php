@@ -14,12 +14,20 @@
 /*Route::get('/', function () {
     return view('welcome');
 });*/
-
+//系统用用户名密码登录 不是邮箱
+//注册 登录 框架自带 不过要传的数据要对
 Route::auth();
 
-
+//系统主页
 Route::get('/home', 'HomeController@welcome');
 Route::get('/', 'HomeController@welcome');
+
+//用户资料
+Route::get('/profile', 'HomeController@profile');
+//申请成为咨询师
+Route::get('/apply', 'HomeController@apply');
+//处理申请
+Route::get('/deal','HomeController@deal_apply');
 
 //基础设置
 Route::get('/system', 'SettingsController@system');

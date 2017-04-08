@@ -113,6 +113,9 @@
             <script src="../assets/js2/bootstrap.min.js"></script>
 
             <script src="{{ asset('Chart.min.js') }}"></script>
+            <!-- 抑郁表测试结果 -->
+            @foreach($scales as $scale)
+                @if($scale->title == '汉密尔顿抑郁量表')
             <script>
                 $(document).ready(function () {
                     var ctxline = $('#lineChart');
@@ -173,7 +176,73 @@
                     });
                 })
             </script>
+                @endif
+            @endforeach
 
+            @foreach($scales as $scale)
+                @if($scale->title == '汉密尔顿焦虑量表')
+                    <script>
+                        $(document).ready(function () {
+                            var ctxline = $('#lineChart');
+                            var data = {
+                                labels: ["躯体性焦虑", "精神性焦虑"],
+                                datasets: [
+                                    {
+                                        label: "测试结果",
+                                        fill: false,
+                                        lineTension: 0.1,
+                                        backgroundColor: "rgba(75,192,192,0.2)",
+                                        borderColor: "rgba(75,192,192,1)",
+                                        borderCapStyle: 'butt',
+                                        borderDash: [],
+                                        borderDashOffset: 0.0,
+                                        borderJoinStyle: 'miter',
+                                        pointBorderColor: "rgba(75,192,192,1)",
+                                        pointBackgroundColor: "#fff",
+                                        pointBorderWidth: 1,
+                                        pointHoverRadius: 5,
+                                        pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                                        pointHoverBorderColor: "rgba(220,220,220,1)",
+                                        pointHoverBorderWidth: 2,
+                                        pointRadius: 1,
+                                        pointHitRadius: 10,
+                                        data: [{{ $a }},{{ $b }}],
+                                        spanGaps: false,
+                                    },
+                                    {
+                                        label: "标准线",
+                                        fill: false,
+                                        lineTension: 0.1,
+                                        backgroundColor: "rgba(112,128,144,0.2)",
+                                        borderColor: "rgba(112,128,144,1)",
+                                        borderCapStyle: 'butt',
+                                        borderDash: [],
+                                        borderDashOffset: 0.0,
+                                        borderJoinStyle: 'miter',
+                                        pointBorderColor: "rgba(112,128,144,1)",
+                                        pointBackgroundColor: "#fff",
+                                        pointBorderWidth: 1,
+                                        pointHoverRadius: 5,
+                                        pointHoverBackgroundColor: "rgba(112,128,144,1)",
+                                        pointHoverBorderColor: "rgba(112,128,144,1)",
+                                        pointHoverBorderWidth: 2,
+                                        pointRadius: 1,
+                                        pointHitRadius: 10,
+                                        data: [3,4],
+                                        spanGaps: false,
+                                    },
+                                ]
+
+                            };
+
+                            var lineChart = new Chart(ctxline, {
+                                type: 'line',
+                                data: data
+                            });
+                        })
+                    </script>
+                    @endif
+                    @endforeach
 
             <!-- page specific plugin scripts -->
 

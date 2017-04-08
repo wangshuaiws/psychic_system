@@ -74,7 +74,7 @@
                                                 <td>{{ $scale->name }}</td>
                                                 <td>{{  $scale->title  }}</td>
                                                 <td><a href="{{ route('permissions.show',['id' => $scale->id])}}">测试</a>
-                                                    <a href="{{ url('/delmete').'?'.'id'.'='.$scale->id }}">删除</a>
+                                                    <a href="{{ url('/delete').'?'.'id'.'='.$scale->id }}">删除</a>
                                                 </td>
                                                 <td>未完成</td>
                                             </tr>
@@ -126,7 +126,7 @@
                                                         <td>{{ $scale->name }}</td>
                                                         <td>{{  $scale->title  }}</td>
                                                         <td><a href="{{ url('/gaugecheck').'?'.'id'.'='.$scale->id}}">查看结果</a>
-                                                            <a href="{{ url('/delmete').'?'.'id'.'='.$scale->id }}">删除</a>
+                                                            <a href="{{ url('/delete').'?'.'id'.'='.$scale->id }}">删除</a>
                                                         </td>
                                                         <td>已完成</td>
                                                     </tr>
@@ -260,14 +260,25 @@
                                                     登录名
                                                 </th>
                                                 <th>
+                                                    性别
+                                                </th>
+                                                <th>状态</th>
+                                                <th>
                                                     <i class="ace-icon fa fa-clock-o"></i> 申请时间
                                                 </th>
                                                 <th class="hidden-480">操作</th>
                                             </tr>
                                             </thead>
-
+                                             <?php $i=1; ?>
                                             <tbody>
-
+                                                @foreach($applies as $apply)
+                                                    <td>{{ $i++ }}</td>
+                                                    <td>{{ $apply->name }}</td>
+                                                    <td>{{  $apply->sex == 'man'? '男':'女' }}</td>
+                                                    <td>未审核</td>
+                                                    <td>{{ $apply->updated_at }}</td>
+                                                    <td><a href="{{ url('/deal').'?'.'id'.'='.$apply->user_id }}">审核</a></td>
+                                                    @endforeach
                                             </tbody>
                                         </table>
                                     </div>

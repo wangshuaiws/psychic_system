@@ -80,7 +80,8 @@
             <li class="">
                 <a href="{{ url('/home') }}">
 
-                    <i class="menu-icon fa fa-caret-right"></i> 查看测试结果
+                    <i class="menu-icon fa fa-caret-right"></i> @role('user')查看测试结果@endrole
+                    @permission('psychological_test') 我的审核 @endpermission
                 </a>
 
                 <b class="arrow"></b>
@@ -191,7 +192,7 @@
                 <b class="arrow"></b>
             </li>
             @endpermission
-
+            @role('user')
             <li class="">
                 <a href="{{ url('/appointmy') }}">
                     <i class="menu-icon fa fa-caret-right"></i> 我的预约
@@ -199,6 +200,7 @@
 
                 <b class="arrow"></b>
             </li>
+            @endrole
         </ul>
     </li>
     @role('admin')

@@ -58,4 +58,9 @@ class User extends Authenticatable
         return $this->belongsToMany('App\order');
     }
 
+    public function application()
+    {
+        return $this->hasOne('App\Application');
+    }
+
 }

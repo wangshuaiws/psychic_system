@@ -42,17 +42,31 @@ class TestsController extends Controller
     //查看测试结果
     public function gaugecheck()
     {
-        $scales = Auth::user()->scale()->where('id',$_GET['id'])->get();
-        foreach($scales as $scale)
+        $scales = Auth::user()->scale()->where('id',$_GET['id'])->first();
+        if($scales->title == '汉密尔顿抑郁量表')
         {
-            $ab = json_decode($scale->number,true);
+            $ab = json_decode($scales->number,true);
+            $a = $ab['0']; $b = $ab['1'];
+            $c = $ab['2']; $d = $ab['3'];
+            $e = $ab['4']; $f = $ab['5'];
+            $g = $ab['6'];
+            //$scales = Scale::findOrFail($_GET['id'])->get();
+            $scales = Auth::user()->scale()->where('id',$_GET['id'])->get();
+            //向结果页面传递数据
+            return view('tests/gaugecheck',compact('scales','a','b','c','d','e','f','g'));
         }
-        $a = $ab['0']; $b = $ab['1'];
-        $c = $ab['2']; $d = $ab['3'];
-        $e = $ab['4']; $f = $ab['5'];
-        $g = $ab['6'];
-        //$scales = Scale::findOrFail($_GET['id'])->get();
-        return view('tests/gaugecheck',compact('scales','a','b','c','d','e','f','g'));
+
+        if($scales->title == '汉密尔顿焦虑量表')
+        {
+            $ab = json_decode($scales->number,true);
+            $a = $ab['0'];
+            $b = $ab['1'];
+            //$scales = Scale::findOrFail($_GET['id'])->get();
+            $scales = Auth::user()->scale()->where('id',$_GET['id'])->get();
+            //向结果页面传递数据
+            return view('tests/gaugecheck',compact('scales','a','b'));
+        }
+
     }
 
 

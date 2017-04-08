@@ -44,8 +44,8 @@ function protect_default_admin($role,$user)
         return 'disabled';
     }
 }
-//处理量表数据
-function deal($a)
+//处理抑郁量表数据
+function depressed_deal($a)
 {
     $c = array();
     $b = $a['10']+$a['11']+$a['12']+$a['13']+$a['15']+$a['17'];
@@ -65,21 +65,54 @@ function deal($a)
     return $c;
 }
 
-function total($b)
+//判断抑郁程度
+function depressed_total($sum)
 {
-    if($b>=35)
+    if($sum>=35)
     {
         return '严重抑郁';
     }
-    if($b>=20)
+    if($sum>=20)
     {
         return '中度抑郁';
     }
-    if($b<8)
+    if($sum<8)
     {
         return '没有抑郁症状';
     }
     return '轻度抑郁';
+}
+
+//处理焦虑数据
+function anxious_deal($a)
+{
+    $c = array();
+    $b = $a['7']+$a['8']+$a['9']+$a['10']+$a['11']+$a['12']+$a['13'];
+    array_push($c,$b);
+    $b = $a['1']+$a['2']+$a['3']+$a['4']+$a['5']+$a['6']+$a['14'];
+    array_push($c,$b);
+    return $c;
+}
+
+function anxious_total($sum)
+{
+    if($sum>=29)
+    {
+        return '严重焦虑';
+    }
+    if($sum>=21)
+    {
+        return '明显焦虑';
+    }
+    if($sum>=14)
+    {
+        return '轻度焦虑';
+    }
+    if($sum<7)
+    {
+        return '没有焦虑症状';
+    }
+    return '可能有焦虑';
 }
 
 

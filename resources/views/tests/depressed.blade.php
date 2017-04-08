@@ -91,7 +91,7 @@
                                 {!! Form::radio('7','4') !!}5.严重
                             </div>
                             <div class="form-group">
-                                {!! Form::label('title','8. 迟缓',['class'=>'control-label']) !!}
+                                {!! Form::label('title','8. 迟缓 :',['class'=>'control-label']) !!}
                                 {!! Form::radio('8','0') !!}1.无
                                 {!! Form::radio('8','1') !!}2.轻度
                                 {!! Form::radio('8','2') !!}3.中度
@@ -99,7 +99,7 @@
                                 {!! Form::radio('8','4') !!}5.严重
                             </div>
                             <div class="form-group">
-                                {!! Form::label('title','9. 激越',['class'=>'control-label']) !!}
+                                {!! Form::label('title','9. 激越 :',['class'=>'control-label']) !!}
                                 {!! Form::radio('9','0') !!}1.无
                                 {!! Form::radio('9','1') !!}2.轻度
                                 {!! Form::radio('9','2') !!}3.中度
@@ -107,7 +107,7 @@
                                 {!! Form::radio('9','4') !!}5.严重
                             </div>
                             <div class="form-group">
-                                {!! Form::label('title','10. 精神性焦虑',['class'=>'control-label']) !!}
+                                {!! Form::label('title','10. 精神性焦虑 :',['class'=>'control-label']) !!}
                                 {!! Form::radio('10','0') !!}1.无
                                 {!! Form::radio('10','1') !!}2.轻度
                                 {!! Form::radio('10','2') !!}3.中度
@@ -115,7 +115,7 @@
                                 {!! Form::radio('10','4') !!}5.严重
                             </div>
                             <div class="form-group">
-                                {!! Form::label('title','11. 躯体性焦虑',['class'=>'control-label']) !!}
+                                {!! Form::label('title','11. 躯体性焦虑 :',['class'=>'control-label']) !!}
                                 {!! Form::radio('11','0') !!}1.无
                                 {!! Form::radio('11','1') !!}2.轻度
                                 {!! Form::radio('11','2') !!}3.中度
@@ -123,25 +123,25 @@
                                 {!! Form::radio('11','4') !!}5.严重
                             </div>
                             <div class="form-group">
-                                {!! Form::label('title','12. 胃肠道症状',['class'=>'control-label']) !!}
+                                {!! Form::label('title','12. 胃肠道症状 :',['class'=>'control-label']) !!}
                                 {!! Form::radio('12','0') !!}1.无
                                 {!! Form::radio('12','1') !!}2.轻度
                                 {!! Form::radio('12','2') !!}3.中度
                             </div>
                             <div class="form-group">
-                                {!! Form::label('title','13. 全身症状',['class'=>'control-label']) !!}
+                                {!! Form::label('title','13. 全身症状 :',['class'=>'control-label']) !!}
                                 {!! Form::radio('13','0') !!}1.无
                                 {!! Form::radio('13','1') !!}2.轻度
                                 {!! Form::radio('13','2') !!}3.中度
                             </div>
                             <div class="form-group">
-                                {!! Form::label('title','14. 性症状',['class'=>'control-label']) !!}
+                                {!! Form::label('title','14. 性症状 :',['class'=>'control-label']) !!}
                                 {!! Form::radio('14','0') !!}1.无
                                 {!! Form::radio('14','1') !!}2.轻度
                                 {!! Form::radio('14','2') !!}3.中度
                             </div>
                             <div class="form-group">
-                                {!! Form::label('title','15. 疑病',['class'=>'control-label']) !!}
+                                {!! Form::label('title','15. 疑病 :',['class'=>'control-label']) !!}
                                 {!! Form::radio('15','0') !!}1.无
                                 {!! Form::radio('15','1') !!}2.轻度
                                 {!! Form::radio('15','2') !!}3.中度
@@ -149,13 +149,13 @@
                                 {!! Form::radio('15','4') !!}5.严重
                             </div>
                             <div class="form-group">
-                                {!! Form::label('title','16. 体重减轻',['class'=>'control-label']) !!}
+                                {!! Form::label('title','16. 体重减轻 :',['class'=>'control-label']) !!}
                                 {!! Form::radio('16','0') !!}1.无
                                 {!! Form::radio('16','1') !!}2.轻度
                                 {!! Form::radio('16','2') !!}3.中度
                             </div>
                             <div class="form-group">
-                                {!! Form::label('title','17. 自知力',['class'=>'control-label']) !!}
+                                {!! Form::label('title','17. 自知力 :',['class'=>'control-label']) !!}
                                 {!! Form::radio('17','0') !!}1.无
                                 {!! Form::radio('17','1') !!}2.轻度
                                 {!! Form::radio('17','2') !!}3.中度
@@ -163,19 +163,19 @@
                                 {!! Form::radio('17','4') !!}5.严重
                             </div>
                             <div class="form-group">
-                                {!! Form::label('title','18. 日夜变化 早',['class'=>'control-label']) !!}
+                                {!! Form::label('title','18. 日夜变化 早 :',['class'=>'control-label']) !!}
                                 {!! Form::radio('18','0') !!}1.无
                                 {!! Form::radio('18','1') !!}2.轻度
                                 {!! Form::radio('18','2') !!}3.中度
                             </div>
                             <div class="form-group">
-                                {!! Form::label('title','19. 日夜变化 晚',['class'=>'control-label']) !!}
+                                {!! Form::label('title','19. 日夜变化 晚 :',['class'=>'control-label']) !!}
                                 {!! Form::radio('19','0') !!}1.无
                                 {!! Form::radio('19','1') !!}2.轻度
                                 {!! Form::radio('19','2') !!}3.中度
                             </div>
                             <div class="form-group">
-                                {!! Form::label('title','20. 人格或现实解体',['class'=>'control-label']) !!}
+                                {!! Form::label('title','20. 人格或现实解体 :',['class'=>'control-label']) !!}
                                 {!! Form::radio('20','0') !!}1.无
                                 {!! Form::radio('20','1') !!}2.轻度
                                 {!! Form::radio('20','2') !!}3.中度
@@ -183,7 +183,7 @@
                                 {!! Form::radio('20','4') !!}5.严重
                             </div>
                             <div class="form-group">
-                                {!! Form::label('title','21. 偏执症状',['class'=>'control-label']) !!}
+                                {!! Form::label('title','21. 偏执症状 :',['class'=>'control-label']) !!}
                                 {!! Form::radio('21','0') !!}1.无
                                 {!! Form::radio('21','1') !!}2.轻度
                                 {!! Form::radio('21','2') !!}3.中度
@@ -191,13 +191,13 @@
                                 {!! Form::radio('21','4') !!}5.严重
                             </div>
                             <div class="form-group">
-                                {!! Form::label('title','22. 强迫症状',['class'=>'control-label']) !!}
+                                {!! Form::label('title','22. 强迫症状 :',['class'=>'control-label']) !!}
                                 {!! Form::radio('22','0') !!}1.无
                                 {!! Form::radio('22','1') !!}2.轻度
                                 {!! Form::radio('22','2') !!}3.中度
                             </div>
                             <div class="form-group">
-                                {!! Form::label('title','23. 能力减退感',['class'=>'control-label']) !!}
+                                {!! Form::label('title','23. 能力减退感 :',['class'=>'control-label']) !!}
                                 {!! Form::radio('23','0') !!}1.无
                                 {!! Form::radio('23','1') !!}2.轻度
                                 {!! Form::radio('23','2') !!}3.中度
@@ -205,7 +205,7 @@
                                 {!! Form::radio('23','4') !!}5.严重
                             </div>
                             <div class="form-group">
-                                {!! Form::label('title','24. 绝望感',['class'=>'control-label']) !!}
+                                {!! Form::label('title','24. 绝望感 :',['class'=>'control-label']) !!}
                                 {!! Form::radio('24','0') !!}1.无
                                 {!! Form::radio('24','1') !!}2.轻度
                                 {!! Form::radio('24','2') !!}3.中度
@@ -213,7 +213,7 @@
                                 {!! Form::radio('24','4') !!}5.严重
                             </div>
                             <div class="form-group">
-                                {!! Form::label('title','25. 自卑感',['class'=>'control-label']) !!}
+                                {!! Form::label('title','25. 自卑感 :',['class'=>'control-label']) !!}
                                 {!! Form::radio('25','0') !!}1.无
                                 {!! Form::radio('25','1') !!}2.轻度
                                 {!! Form::radio('25','2') !!}3.中度

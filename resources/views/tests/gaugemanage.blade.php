@@ -53,7 +53,7 @@
                                                 <td>25</td>
                                                 <td>有抑郁症状的成年人(医生评定)</td>
                                                 <td>
-                                                    <span><a href="javascript:changePage('depressed.html')">查看</a></span>
+                                                    <span><a href="/permissions/1">查看</a></span>
                                                     <span><a href="">删除</a></span>
                                                 </td>
                                             </tr>
@@ -64,7 +64,7 @@
                                                 <td>14</td>
                                                 <td>有抑郁症状的成年人(医生评定)</td>
                                                 <td>
-                                                    <span><a href="">查看</a></span>
+                                                    <span><a href="/permissions/2">查看</a></span>
                                                     <span><a href="">删除</a></span>
                                                 </td>
                                             </tr>

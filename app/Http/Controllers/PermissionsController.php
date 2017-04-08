@@ -78,8 +78,25 @@ class PermissionsController extends Controller
     //查看量表逻辑
     public function show($id)
     {
-        $scale = Scale::where('id',$id)->get();
-        return view('tests/index',compact('scale'));
+        $scale = Scale::where('id',$id)->first();
+        if($scale->title == '汉密尔顿抑郁量表')
+        {
+            $scale = Scale::where('id',$id)->get();
+            return view('tests/depressed',compact('scale'));
+        }
+
+        if($scale->title == '症状自评量表(SCL-90)')
+        {
+            $scale = Scale::where('id',$id)->get();
+            return view('tests/depressed',compact('scale'));
+        }
+
+        if($scale->title == '汉密尔顿焦虑量表')
+        {
+            $scale = Scale::where('id',$id)->get();
+            return view('tests/anxious',compact('scale'));
+        }
+
     }
 
     /**
@@ -129,19 +146,36 @@ class PermissionsController extends Controller
     //处理用户所填写的量表
     public function update(Request $request, $id)
     {
-        //dd($id);
-        if(count($_POST)<27)
-        {
-            return Redirect::back();
+        $scale = Scale::where('id',$id)->first();
+        if($scale->title == '汉密尔顿抑郁量表'){
+            if(count($_POST)<27)
+            {
+                return Redirect::back();
+            }
+            $b = depressed_total(array_sum($_POST));
+            //$a = array_sum($_GET);
+            $a = json_encode(depressed_deal($_POST));
+            $scale = Scale::findOrFail($id);
+            $scale->number = $a;
+            $scale->total = $b;
+            $scale->completed = 1;
+            $scale->save();
         }
-        $b = total(array_sum($_POST));
-        //$a = array_sum($_GET);
-        $a = json_encode(deal($_POST));
-        $scale = Scale::findOrFail($id);
-        $scale->number = $a;
-        $scale->total = $b;
-        $scale->completed = 1;
-        $scale->save();
+
+        if($scale->title == '汉密尔顿焦虑量表'){
+            if(count($_POST)<16)
+            {
+                return Redirect::back();
+            }
+            $b = anxious_total(array_sum($_POST));
+            //$a = array_sum($_GET);
+            $a = json_encode(anxious_deal($_POST));
+            $scale = Scale::findOrFail($id);
+            $scale->number = $a;
+            $scale->total = $b;
+            $scale->completed = 1;
+            $scale->save();
+        }
        // dd(deal($_POST));
         return Redirect::back();
 

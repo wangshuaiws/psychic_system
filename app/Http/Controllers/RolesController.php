@@ -78,10 +78,11 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //管理员编辑用户的角色
     public function edit(Request $request,$id)
     {
         $user = User::findOrFail($id);
-        $user->permission = '1';
+        $user->permission = 1;
         $user->save();
         if($roleArray = $request->role){
             $user->roles()->sync($roleArray);
