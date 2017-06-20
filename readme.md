@@ -35,4 +35,6 @@
 * 如果想测试量表,请登录咨询师账号为注册的用户分配量表;
 * 系统运行地址 www.wang66.top
 
+* 改进后代码及介绍  https://github.com/wangshuaiws/system2
+
 * 未完，待完善细节。
